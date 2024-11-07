@@ -55,4 +55,7 @@
 
 ## Timeline:
 (Provide a rough timeline or milestones for the project)
-- About 5/12/2024
+- week 1, software and dataset preparation
+- week 2, choose the right models and transfer them to the Hailo-8 fitted format
+- week 3, test and compare the metrics with different models
+- week 4, prepare the report
