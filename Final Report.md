@@ -10,7 +10,7 @@
 
 ## Objective and Motivation
 - The primary objective of this project is to evaluate the performance of ResNet_18, MobileNet_V2, and EfficientNet_M models trained on the MNIST dataset and deployed on the Raspberry Pi 4. Metrics such as inference time, frames per second (FPS), accuracy, and CPU/memory utilization were analyzed. Although we initially aimed to use the Hailo-8 accelerator for enhanced performance, its incompatibility with Raspberry Pi 4 necessitated a pivot to standalone execution on the Raspberry Pi.
-- [MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
+[MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
 
 - This study demonstrates the potential of cost-effective, low-power edge devices like the Raspberry Pi 4 for real-world AI applications such as smart surveillance, automated quality control, and embedded AI in IoT systems.
 
