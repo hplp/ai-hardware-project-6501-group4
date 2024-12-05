@@ -10,6 +10,7 @@
 
 ## Objective and Motivation
 - The primary objective of this project is to evaluate the performance of ResNet_18, MobileNet_V2, and EfficientNet_M models trained on the MNIST dataset and deployed on the Raspberry Pi 4. Metrics such as inference time, frames per second (FPS), accuracy, and CPU/memory utilization were analyzed. Although we initially aimed to use the Hailo-8 accelerator for enhanced performance, its incompatibility with Raspberry Pi 4 necessitated a pivot to standalone execution on the Raspberry Pi.
+- [MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
 
 - This study demonstrates the potential of cost-effective, low-power edge devices like the Raspberry Pi 4 for real-world AI applications such as smart surveillance, automated quality control, and embedded AI in IoT systems.
 
@@ -31,9 +32,9 @@ By training and deploying lightweight models on this platform, we explore its fe
 - 4.	Compare results to determine the most efficient model for edge deployment.
 
 ## Model Comparisons
-- ResNet_18: A compact residual network optimized for image recognition, balancing accuracy and computational cost.
-- MobileNet_V2: Utilizes depthwise separable convolutions and inverted residuals to reduce resource consumption, making it ideal for embedded systems.
-- EfficientNet_M: Employs Neural Architecture Search (NAS) to scale model dimensions for optimal accuracy and efficiency.
+- [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html): A compact residual network optimized for image recognition, balancing accuracy and computational cost.
+- [MobileNet_V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/): Utilizes depthwise separable convolutions and inverted residuals to reduce resource consumption, making it ideal for embedded systems.
+- [EfficientNet_M](https://pytorch.org/vision/main/models/efficientnet.html): Employs Neural Architecture Search (NAS) to scale model dimensions for optimal accuracy and efficiency.
 
 ## Experiment Flow
 - 1.	Preprocess the MNIST dataset into a format suitable for TensorFlow training.
