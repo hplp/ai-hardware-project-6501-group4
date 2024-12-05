@@ -51,9 +51,9 @@ By training and deploying lightweight models on this platform, we explore its fe
 - 3.	Deploy quantized TFLite versions of the models on the Raspberry Pi 4.
 - 4.	Execute inference tasks and log metrics using monitoring tools.
 ### Example inference command:
-'''ruby
+```ruby
 python3 classify_image.py --model_file <model.tflite> --image <test_image>
-'''
+```
 ## Results and Discussion
 ### Metrics Table
 | Metrics  | ResNet_18 | MobileNet_V2 | EfficientNet_M |
