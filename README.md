@@ -9,7 +9,7 @@
 - Henan Zhao
 
 ## Project Title:
-- Accelerated Testing of Image Classification Task Based on Raspberry Pi 5
+- Accelerated Testing of Image Classification Task Based on Raspberry Pi 4
 
 ## Project Description:
 - The image classification task was accelerated on Raspberry Pi with Waveshare Hailo-8 accelerators.
