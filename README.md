@@ -1,7 +1,6 @@
 # AI_Hardware_Project_ECE6501_Group_4
 
 ## Team Name: 
-(Enter your team name from Canvas)
 - ECE6501-Group4
 ## Team Members:
 - Jiandi Wang
@@ -10,11 +9,9 @@
 - Henan Zhao
 
 ## Project Title:
-(Enter your project title - be creative)
 - Accelerated Testing of Image Classification Task Based on Raspberry Pi 5
 
 ## Project Description:
-(Provide a short description of the problem you're addressing)
 - The image classification task was accelerated on Raspberry Pi with Waveshare Hailo-8 accelerators.
 - Comparing different models like MobileNet and ResNet, we show efficient AI reasoning on edge devices.
 
