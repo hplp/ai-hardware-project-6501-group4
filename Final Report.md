@@ -18,8 +18,8 @@
 - Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications.
 By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
 -	Smart IoT systems for object detection and classification.
--  	On-device handwriting recognition (e.g., in education or financial systems).
--       I-enhanced portable devices for accessibility solutions.
+- On-device handwriting recognition (e.g., in education or financial systems).
+- I-enhanced portable devices for accessibility solutions.
 
 ## Project Outline
 - 1.	Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.
