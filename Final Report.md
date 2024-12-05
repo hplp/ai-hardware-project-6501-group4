@@ -20,7 +20,7 @@ By training and deploying lightweight models on this platform, we explore its fe
 -	Smart IoT systems for object detection and classification.
 - On-device handwriting recognition (e.g., in education or financial systems).
 - I-enhanced portable devices for accessibility solutions.
-
+![](https://assets.raspberrypi.com/static/raspberry-pi-4-labelled@2x-1c8c2d74ade597b9c9c7e9e2fff16dd4.png)
 ## Project Outline
 - 1.	Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.
 - 2.	Optimize models for deployment on Raspberry Pi 4 using TensorFlow Lite.
