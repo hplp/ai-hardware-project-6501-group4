@@ -9,11 +9,17 @@
 - Henan Zhao(cnw7cq): Model Finding
 
 ## Objective and Motivation
-- The primary objective of this project is to evaluate the performance of ResNet_18, MobileNet_V2, and EfficientNet_M models trained on the MNIST dataset and deployed on the Raspberry Pi 4. Metrics such as inference time, frames per second (FPS), accuracy, and CPU/memory utilization were analyzed. Although we initially aimed to use the Hailo-8 accelerator for enhanced performance, its incompatibility with Raspberry Pi 4 necessitated a pivot to standalone execution on the Raspberry Pi.
+- The primary objective of this project is to evaluate the performance of ResNet_18, MobileNet_V2, and EfficientNet models trained on the MNIST dataset and deployed on the Raspberry Pi 4. Metrics such as inference time, frames per second (FPS), accuracy, and CPU/memory utilization were analyzed. Although we initially aimed to use the Hailo-8 accelerator for enhanced performance, its incompatibility with Raspberry Pi 4 necessitated a pivot to standalone execution on the Raspberry Pi.
 [MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
 
 - This study demonstrates the potential of cost-effective, low-power edge devices like the Raspberry Pi 4 for real-world AI applications such as smart surveillance, automated quality control, and embedded AI in IoT systems.
-
+## Models
+### ResNet_18
+- ![](https://www.researchgate.net/publication/366608244/figure/fig1/AS:11431281109643320@1672145338540/Structure-of-the-Resnet-18-Model.jpg)
+### MobileNet_V2
+- ![](https://www.researchgate.net/publication/368539704/figure/fig3/AS:11431281143702109@1681264260877/Block-diagram-of-the-MobileNetV2-architecture.png)
+### EfficientNet
+- ![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
 ## Introduction
 - Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications.
 By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
