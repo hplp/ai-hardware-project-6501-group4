@@ -3,10 +3,10 @@
 ## Team Name: 
 - ECE6501-Group4
 ## Team Members:
-- Jiandi Wang(ctf2we)
-- Yunwei Cai(ftf8kf)
-- Zilin Wang(akw4py)
-- Henan Zhao(cnw7cq)
+- Jiandi Wang(ctf2we): Hardware, Environment Debugging, Models adjusting, Test and Data analysis
+- Yunwei Cai(ftf8kf): Model Finding
+- Zilin Wang(akw4py): Environment Debugging, Test, Data analysis, and Slides
+- Henan Zhao(cnw7cq): Model Finding
 
 ## Objective and Motivation
 - The primary objective of this project is to evaluate the performance of ResNet_18, MobileNet_V2, and EfficientNet_M models trained on the MNIST dataset and deployed on the Raspberry Pi 4. Metrics such as inference time, frames per second (FPS), accuracy, and CPU/memory utilization were analyzed. Although we initially aimed to use the Hailo-8 accelerator for enhanced performance, its incompatibility with Raspberry Pi 4 necessitated a pivot to standalone execution on the Raspberry Pi.
