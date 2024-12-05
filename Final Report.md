@@ -56,7 +56,7 @@ By training and deploying lightweight models on this platform, we explore its fe
 ## Results and Discussion
 ### Metrics Table
 | Metrics  | ResNet_18 | MobileNet_V2 | EfficientNet_M |
-| ------------- | ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- | 
 | Inference Speed(/s)  | 70.37  | 287.92 | 104.58 |
 | Accuracy(%)  | 98.59  | 6.48 | 11.6 |
 | CPU Utiization(%) | 95.3 | 72.5 | 85.6 |
