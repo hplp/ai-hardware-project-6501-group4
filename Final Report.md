@@ -55,11 +55,11 @@ By training and deploying lightweight models on this platform, we explore its fe
 
 ## Results and Discussion
 ### Metrics Table
-“`html
-
-列1	列2	列3
-内容1	内容2	内容3
-内容4	内容5	内容6
+“`markdown
+| 列1    | 列2    | 列3   |
+|——|——|—–|
+| 内容1  | 内容2  | 内容3 |
+| 内容4  | 内容5  | 内容6 |
 “`
 ### Observations
  - •	Inference Time and FPS: MobileNet_V2 demonstrated the best balance between speed and resource efficiency, making it suitable for real-time edge applications.
