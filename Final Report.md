@@ -1,4 +1,4 @@
-# Accelerated Testing of Image Classification Task Based on Raspberry Pi 4
+# Testing of Image Classification Task Based on Raspberry Pi 4
 
 ## 1. Team Name: 
 - ECE6501-Group4
