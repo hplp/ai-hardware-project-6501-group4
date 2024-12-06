@@ -3,10 +3,10 @@
 ## Team Name: 
 - ECE6501-Group4
 ## Team Members:
-- **Jiandi Wang(ctf2we): Hardware, Environment Debugging, Models adjusting, Test and Data analysis
-- **Yunwei Cai(ftf8kf): Model Finding
-- **Zilin Wang(akw4py): Environment Debugging, Test, Data analysis, and Slides
-- **Henan Zhao(cnw7cq): Model Finding
+- **Jiandi Wang(ctf2we)**: Hardware, Environment Debugging, Models adjusting, Test and Data analysis
+- **Yunwei Cai(ftf8kf)**: Model Finding
+- **Zilin Wang(akw4py)**: Environment Debugging, Test, Data analysis, and Slides
+- **Henan Zhao(cnw7cq)**: Model Finding
 
 ## Objective and Motivation
 
@@ -48,10 +48,10 @@ By training and deploying lightweight models on this platform, we explore its fe
 - 1.	Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.
 - 2.	Optimize models for deployment on Raspberry Pi 4 using TensorFlow Lite.
 - 3.	Benchmark models under identical conditions to measure:
-- **Inference time
-- **Frames per second (FPS)
-- **Accuracy
-- **CPU and memory utilization
+- **Inference time**
+- **Frames per second (FPS)**
+- **Accuracy**
+- **CPU and memory utilization**
 - 4.	Compare results to determine the most efficient model for edge deployment.
 
 ## Model Comparisons
@@ -63,10 +63,10 @@ By training and deploying lightweight models on this platform, we explore its fe
 - 1.	Preprocess the MNIST dataset into a format suitable for TensorFlow training.
 - 2.	Train and quantize models on a local machine before transferring them to Raspberry Pi 4.
 - 3.	Perform inference on a test set and collect performance metrics, including:
-- **Average inference time
-- **FPS
-- **Top-1 accuracy
-- **Resource usage (CPU, memory)
+- **Average inference time**
+- **FPS**
+- **Accuracy**
+- **Resource usage (CPU, memory)**
 - 4.	Discuss trade-offs between performance and accuracy among the models.
 
 ## Methodology
@@ -122,9 +122,9 @@ By understanding these limitations, this project highlights the importance of se
 - This project demonstrates the Raspberry Pi 4’s capability to support lightweight AI models for edge computing tasks. Among the tested models, MobileNet_V2 emerged as the most practical choice for real-world deployment due to its superior speed and resource efficiency.
 
 - Future work could include:
-- 	1.	Expanding the dataset to include more complex tasks (e.g., CIFAR-10).
-- 	2.	Investigating other accelerators compatible with Raspberry Pi 4.
-- 	3.	Exploring advanced optimization techniques like pruning and quantization-aware training.
+- **Expanding the dataset to include more complex tasks (e.g., CIFAR-10).**
+- **Investigating other accelerators compatible with Raspberry Pi 4.**
+- **Exploring advanced optimization techniques like pruning and quantization-aware training.**
 
 ## References
 -	1.	A. G. Howard, et al., MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications, 2017.
