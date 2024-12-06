@@ -85,10 +85,12 @@ source my_project_env/bin/activate
 
 # Verify Python version
 python --version
+```
    - Created a virtual environment using `venv` to manage dependencies cleanly.
 3. **Library Installation**:
    - Installed essential libraries, including `TensorFlow Lite`, `ONNX Runtime`, `numpy`, and `scipy` for model inference.
    - Added `matplotlib` and `seaborn` for visualizing performance metrics and `psutil` for monitoring resource usage.
+```bash
 # Install TensorFlow Lite
 pip install tflite-runtime
 
@@ -97,16 +99,113 @@ pip install onnxruntime
 
 # Install other essential libraries
 pip install numpy scipy matplotlib seaborn psutil
+```
 4. **Dataset Preparation**:
    - Downloaded the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist), a standard benchmark for handwritten digit classification tasks.
    - Preprocessed the data to align with the input format of the selected models.
+```python
+import tensorflow as tf
+
+# Load the MNIST dataset
+mnist = tf.keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# Normalize the data
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+
+# Expand dimensions for model compatibility
+x_train = x_train[..., tf.newaxis]
+x_test = x_test[..., tf.newaxis]
+
+# Save the preprocessed data for later use
+import numpy as np
+np.savez_compressed('mnist_preprocessed.npz', 
+                    x_train=x_train, y_train=y_train, 
+                    x_test=x_test, y_test=y_test)
+```
 5. **Model Conversion**:
    - Converted ResNet_18, MobileNet_V2, and EfficientNet_M models into TensorFlow Lite and ONNX formats for compatibility with the Raspberry Pi.
+   - **TensorFlow Lite Conversion:**
+```python
+import tensorflow as tf
+
+# Load a trained Keras model
+model = tf.keras.models.load_model('resnet18_model.h5')
+
+# Convert to TensorFlow Lite format
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+tflite_model = converter.convert()
+
+# Save the converted model
+with open('resnet18_model.tflite', 'wb') as f:
+    f.write(tflite_model)
+```
+   - **ONNX Conversion (using tf2onnx):**
+```bash
+# Install tf2onnx if not already installed
+pip install tf2onnx
+
+# Convert a Keras model to ONNX format
+python -m tf2onnx.convert --saved-model resnet18_model --output resnet18_model.onnx
+```
    - Applied quantization techniques where applicable to reduce model size and improve inference speed.
 6. **Testing Scripts**:
    - Developed Python scripts to automate inference, collect performance metrics, and log results for comparative analysis.
+   - **Inference Script:**
+```python
+import tflite_runtime.interpreter as tflite
+import numpy as np
+import time
+import psutil
 
+# Load the TFLite model
+interpreter = tflite.Interpreter(model_path="resnet18_model.tflite")
+interpreter.allocate_tensors()
+
+# Get input and output details
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+# Load preprocessed MNIST test data
+data = np.load('mnist_preprocessed.npz')
+x_test, y_test = data['x_test'], data['y_test']
+
+# Run inference and collect metrics
+start_time = time.time()
+cpu_usage = []
+memory_usage = []
+accuracy = 0
+
+for i in range(len(x_test)):
+    input_data = np.expand_dims(x_test[i], axis=0).astype(np.float32)
+    interpreter.set_tensor(input_details[0]['index'], input_data)
+    
+    # Measure CPU and memory usage
+    cpu_usage.append(psutil.cpu_percent())
+    memory_usage.append(psutil.virtual_memory().percent)
+    
+    # Perform inference
+    interpreter.invoke()
+    output_data = interpreter.get_tensor(output_details[0]['index'])
+    
+    # Calculate accuracy
+    if np.argmax(output_data) == y_test[i]:
+        accuracy += 1
+
+# Compute overall metrics
+inference_time = time.time() - start_time
+fps = len(x_test) / inference_time
+accuracy_percentage = (accuracy / len(x_test)) * 100
+
+print(f"Inference Time: {inference_time:.2f} seconds")
+print(f"Frames Per Second: {fps:.2f}")
+print(f"Accuracy: {accuracy_percentage:.2f}%")
+print(f"Average CPU Usage: {np.mean(cpu_usage):.2f}%")
+print(f"Average Memory Usage: {np.mean(memory_usage):.2f}%")
+```
 This robust preparation ensured that the experiments were conducted in a controlled and repeatable manner, enabling precise evaluation of the Raspberry Pi 4’s capabilities for edge AI tasks.
+   
 
 ---
 ## Project Outline
