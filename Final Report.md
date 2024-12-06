@@ -276,11 +276,8 @@ Among the tested models, **ResNet_18** demonstrated superior accuracy and a bala
 - **MobileNet_V2** is designed to prioritize speed and lightweight deployment. While effective in mobile scenarios, its accuracy can suffer when handling noisy or challenging inputs.  
 - **EfficientNet_M** focuses on achieving high accuracy for complex datasets. Its computational demands make it less suited for constrained environments like the Raspberry Pi 4.  
 
----
-By understanding these limitations, this project highlights the importance of selecting models appropriate to the dataset and hardware environment. Future work could include:  
-- **Dataset Augmentation**: Enhancing the MNIST dataset with noise or complex patterns to challenge model performance.  
-- **Advanced Optimization Techniques**: Exploring alternative quantization strategies or fine-tuning models specifically for the Raspberry Pi architecture.  
-- **Alternative Hardware**: Testing on devices with integrated accelerators or exploring newer Raspberry Pi models with improved hardware support.  
+By understanding these limitations, this project highlights the importance of selecting models appropriate to the dataset and hardware environment. 
+
 ### Practical Implications
 - The results highlight the viability of deploying lightweight machine learning models on edge devices for applications such as:
 - Automated document scanning and handwriting recognition.
