@@ -17,7 +17,7 @@
 ### ResNet_18
 ![](https://www.researchgate.net/publication/366608244/figure/fig1/AS:11431281109643320@1672145338540/Structure-of-the-Resnet-18-Model.jpg)
 ### MobileNet_V2
-![](https://www.researchgate.net/publication/368539704/figure/fig3/AS:11431281143702109@1681264260877/Block-diagram-of-the-MobileNetV2-architecture.png)
+![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
 ### EfficientNet
 ![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
 ## Introduction
