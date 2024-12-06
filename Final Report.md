@@ -1,22 +1,22 @@
 # Accelerated Testing of Image Classification Task Based on Raspberry Pi 4
 
-## Team Name: 
+## 1. Team Name: 
 - ECE6501-Group4
 ---
-## Team Members:
+## 2. Team Members:
 - **Jiandi Wang(ctf2we)**: Hardware, Environment Debugging, Models adjusting, Test and Data analysis
 - **Yunwei Cai(ftf8kf)**: Model Finding
 - **Zilin Wang(akw4py)**: Environment Debugging, Test, Data analysis, and Slides
 - **Henan Zhao(cnw7cq)**: Model Finding
 ---
-## Objective and Motivation
+## 3. Objective and Motivation
 
 The primary objective of this project is to evaluate the performance of **ResNet_18**, **MobileNet_V2**, and **EfficientNet_M** models trained on the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) and deployed on the Raspberry Pi 4. Metrics such as **inference time**, **frames per second (FPS)**, **accuracy**, and **CPU/memory utilization** were analyzed.  
 
 Although we initially aimed to utilize the **Hailo-8 accelerator** to enhance model inference speed and efficiency, we had to pivot to standalone execution on the Raspberry Pi 4 due to the accelerator's incompatibility with this platform. This change allowed us to explore the potential of deploying lightweight machine learning models directly on the Raspberry Pi 4 without reliance on external accelerators.  
 
 ---
-## Purpose of Using Raspberry Pi 4  
+## 4. Purpose of Using Raspberry Pi 4  
 The Raspberry Pi 4 was chosen for its **affordability, portability, and flexibility**, making it a compelling platform for edge computing research. Below are the key reasons for its selection:  
 
 - **Cost-Effectiveness**: As a low-cost device, the Raspberry Pi 4 is accessible to developers and researchers with limited resources.  
@@ -34,7 +34,7 @@ This study demonstrates the feasibility of deploying lightweight AI models on ed
 
 ---
 
-## Introduction
+## 5. Introduction
 
 Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications. By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
 
@@ -200,7 +200,7 @@ This robust preparation ensured that the experiments were conducted in a control
 
 ---
 
-## Models
+## 6. Models
 ### [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html)
 ![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rrlou8xyh7DeWdtHZk_m4Q.png)
 ### [MobileNet_V2](https://arxiv.org/abs/1801.04381)
@@ -212,7 +212,7 @@ This robust preparation ensured that the experiments were conducted in a control
 - [EfficientNet_M](https://pytorch.org/vision/main/models/efficientnet.html): Employs Neural Architecture Search (NAS) to scale model dimensions for optimal accuracy and efficiency.
 
 ---
-## Project Outline
+## 7. Project Outline
 1.	**Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.**
 2.	**Optimize models for deployment on Raspberry Pi 4 using TensorFlow Lite.**
 3.	**Benchmark models under identical conditions to measure:**
@@ -224,7 +224,7 @@ This robust preparation ensured that the experiments were conducted in a control
 
 ---
 
-## Experiment Flow
+## 8. Experiment Flow
 1.	**Preprocess the MNIST dataset into a format suitable for TensorFlow training.**
 2.	**Train and quantize models on a local machine before transferring them to Raspberry Pi 4.**
 3.	**Perform inference on a test set and collect performance metrics, including:**
@@ -235,7 +235,7 @@ This robust preparation ensured that the experiments were conducted in a control
 4.	**Discuss trade-offs between performance and accuracy among the models.**
 
 ---
-## Methodology
+## 9. Methodology
 1.	Prepare the Raspberry Pi 4 environment, ensuring necessary libraries (TensorFlow Lite, psutil, etc.) are installed.
 2.	Train models on the MNIST dataset using Python scripts.
 3.	Deploy quantized TFLite versions of the models on the Raspberry Pi 4.
@@ -246,7 +246,7 @@ python3 classify_image.py --model_file <model.tflite> --image <test_image>
 ```
 
 ---
-## Results and Discussion
+## 10. Results and Discussion
 ### Metrics Table
 | Metrics  | ResNet_18 | MobileNet_V2 | EfficientNet_M |
 | ------------- | ------------- | ------------- | ------------- | 
@@ -284,7 +284,7 @@ By understanding these limitations, this project highlights the importance of se
 - Real-time decision-making in embedded IoT devices.
 
 ---
-## Conclusion and Future Work
+## 11. Conclusion and Future Work
 This project demonstrates the Raspberry Pi 4's capability to support lightweight AI models for edge computing tasks, showcasing its potential for cost-effective and portable AI solutions. Among the tested models, **ResNet_18** stood out for its superior accuracy and balanced trade-off between speed and resource usage, making it a strong candidate for scenarios where accuracy is critical, such as quality inspection or medical imaging.
 
 However, for real-world deployments that prioritize speed and resource efficiency, **MobileNet_V2** emerged as the most practical choice. Its lightweight architecture allowed for faster inference times and lower CPU/memory utilization, making it suitable for applications like IoT devices, where responsiveness and energy efficiency are key factors.  
@@ -303,7 +303,7 @@ This study underscores the versatility of the Raspberry Pi 4 in handling diverse
 - Exploring advanced optimization techniques like pruning and quantization-aware training.
 
 ---
-## References
+## 12. References
 -	1.	A. G. Howard, et al., MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications, 2017.
 -	2.	Raspberry Pi Official Documentation: https://www.raspberrypi.org/documentation/
 -	3.	TensorFlow Lite Official Guide: https://www.tensorflow.org/lite
