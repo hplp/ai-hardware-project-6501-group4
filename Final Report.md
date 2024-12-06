@@ -67,13 +67,36 @@ The software setup was tailored to optimize the Raspberry Pi 4 for edge AI tasks
 1. **Operating System Installation**:
    - Installed **Raspberry Pi OS (64-bit)** to leverage the full capabilities of the 64-bit ARM architecture.
    - Flashed the OS image onto the microSD card using tools like [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
-   - ![](https://assets.raspberrypi.com/static/4d26bd8bf3fa72e6c0c424f9aa7c32ea/d1b7c/imager.webp)
+     ![](https://assets.raspberrypi.com/static/4d26bd8bf3fa72e6c0c424f9aa7c32ea/d1b7c/imager.webp)
 2. **Python Environment Setup**:
    - Updated all system packages and installed Python 3.9 or later.
+Run the following commands to update system packages and set up a Python virtual environment:
+
+```bash
+# Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Install Python 3.9 and pip
+sudo apt install python3.9 python3-pip -y
+
+# Create and activate a virtual environment
+python3 -m venv my_project_env
+source my_project_env/bin/activate
+
+# Verify Python version
+python --version
    - Created a virtual environment using `venv` to manage dependencies cleanly.
 3. **Library Installation**:
    - Installed essential libraries, including `TensorFlow Lite`, `ONNX Runtime`, `numpy`, and `scipy` for model inference.
    - Added `matplotlib` and `seaborn` for visualizing performance metrics and `psutil` for monitoring resource usage.
+# Install TensorFlow Lite
+pip install tflite-runtime
+
+# Install ONNX Runtime
+pip install onnxruntime
+
+# Install other essential libraries
+pip install numpy scipy matplotlib seaborn psutil
 4. **Dataset Preparation**:
    - Downloaded the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist), a standard benchmark for handwritten digit classification tasks.
    - Preprocessed the data to align with the input format of the selected models.
