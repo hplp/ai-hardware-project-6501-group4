@@ -34,11 +34,11 @@ This study demonstrates the feasibility of deploying lightweight AI models on ed
 
 ---
 ## Models
-### ResNet_18
+### [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html)
 ![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rrlou8xyh7DeWdtHZk_m4Q.png)
-### MobileNet_V2
+### [MobileNet_V2](https://arxiv.org/abs/1801.04381)
 ![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
-### EfficientNet
+### [EfficientNet](https://arxiv.org/abs/1905.11946)
 ![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
 
 ---
