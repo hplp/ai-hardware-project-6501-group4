@@ -9,10 +9,27 @@
 - Henan Zhao(cnw7cq): Model Finding
 
 ## Objective and Motivation
-- The primary objective of this project is to evaluate the performance of ResNet_18, MobileNet_V2, and EfficientNet models trained on the MNIST dataset and deployed on the Raspberry Pi 4. Metrics such as inference time, frames per second (FPS), accuracy, and CPU/memory utilization were analyzed. Although we initially aimed to use the Hailo-8 accelerator for enhanced performance, its incompatibility with Raspberry Pi 4 necessitated a pivot to standalone execution on the Raspberry Pi.
-[MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
 
-- This study demonstrates the potential of cost-effective, low-power edge devices like the Raspberry Pi 4 for real-world AI applications such as smart surveillance, automated quality control, and embedded AI in IoT systems.
+The primary objective of this project is to evaluate the performance of **ResNet_18**, **MobileNet_V2**, and **EfficientNet_M** models trained on the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) and deployed on the Raspberry Pi 4. Metrics such as **inference time**, **frames per second (FPS)**, **accuracy**, and **CPU/memory utilization** were analyzed.  
+
+Although we initially aimed to utilize the **Hailo-8 accelerator** to enhance model inference speed and efficiency, we had to pivot to standalone execution on the Raspberry Pi 4 due to the accelerator's incompatibility with this platform. This change allowed us to explore the potential of deploying lightweight machine learning models directly on the Raspberry Pi 4 without reliance on external accelerators.  
+
+## Purpose of Using Raspberry Pi 4  
+The Raspberry Pi 4 was chosen for its **affordability, portability, and flexibility**, making it a compelling platform for edge computing research. Below are the key reasons for its selection:  
+
+- **Cost-Effectiveness**: As a low-cost device, the Raspberry Pi 4 is accessible to developers and researchers with limited resources.  
+- **Edge Computing Potential**: By performing AI inference tasks locally, the Raspberry Pi 4 reduces dependency on cloud resources, enabling faster and more secure processing.  
+- **Portability and Deployment Flexibility**: Its small size and energy efficiency make it ideal for real-world applications such as IoT systems and portable AI solutions.  
+- **Reproducibility and Accessibility**: The open-source ecosystem of the Raspberry Pi ensures that experiments can be easily reproduced or extended.  
+
+### Real-World Applications  
+This study demonstrates the feasibility of deploying lightweight AI models on edge devices, offering insights into various real-world use cases:  
+
+1. **Smart Surveillance Systems**: Perform real-time anomaly detection on live camera feeds without relying on cloud processing.  
+2. **Automated Quality Control**: Enable efficient inspection of manufactured products using local image classification.  
+3. **IoT and Wearable Devices**: Provide on-device AI capabilities for healthcare, environmental monitoring, or personalized user experiences.  
+
+---
 ## Models
 ### ResNet_18
 ![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rrlou8xyh7DeWdtHZk_m4Q.png)
@@ -46,10 +63,10 @@ By training and deploying lightweight models on this platform, we explore its fe
 - 1.	Preprocess the MNIST dataset into a format suitable for TensorFlow training.
 - 2.	Train and quantize models on a local machine before transferring them to Raspberry Pi 4.
 - 3.	Perform inference on a test set and collect performance metrics, including:
--  •	Average inference time
--  •	FPS
--  •	Top-1 accuracy
--  •	Resource usage (CPU, memory)
+-  	Average inference time
+-  	FPS
+-  	Top-1 accuracy
+-  	Resource usage (CPU, memory)
 - 4.	Discuss trade-offs between performance and accuracy among the models.
 
 ## Methodology
@@ -70,15 +87,36 @@ python3 classify_image.py --model_file <model.tflite> --image <test_image>
 | CPU Utiization(%) | 95.3 | 72.5 | 85.6 |
 | Memory Utilization(%) | 24.7 | 15.7 | 33.0 |
 
-### Observations
- - •	Inference Time and FPS: MobileNet_V2 demonstrated the best balance between speed and resource efficiency, making it suitable for real-time edge applications.
--  •	Accuracy: ResNet_18 slightly outperformed other models in accuracy, making it ideal for precision-critical applications.
--  •	Resource Utilization: MobileNet_V2 achieved lower CPU and memory usage compared to ResNet_18 and EfficientNet_M.
+### Observations 
+Among the tested models, **ResNet_18** demonstrated superior accuracy and a balanced trade-off between speed and resource usage. In contrast, **MobileNet_V2** and **EfficientNet_M** showed relatively lower performance, either in terms of inference speed or accuracy.  
+
+### Reasons for Limited Performance  
+
+#### 1. Model Complexity and Dataset Simplicity  
+- **EfficientNet_M** is optimized for complex, large-scale datasets (e.g., ImageNet) using advanced scaling techniques. However, its architectural advantages are underutilized on the simple MNIST dataset, leading to suboptimal results.  
+- **MobileNet_V2**, designed for mobile applications, might not fully leverage its optimizations due to the grayscale, low-resolution nature of MNIST.  
+
+#### 2. Optimization for Edge Devices  
+- Both models rely on techniques like **quantization** and **pruning** to optimize performance on resource-constrained devices. These processes can degrade accuracy, particularly for complex architectures like EfficientNet_M.  
+- Lack of hardware accelerators on the Raspberry Pi 4 to support these optimizations further limits their efficiency.  
+
+#### 3. Resource Constraints on Raspberry Pi 4  
+- **EfficientNet_M** is more resource-intensive compared to ResNet_18 and MobileNet_V2. The Raspberry Pi 4’s limited CPU and memory may have throttled its performance, especially during inference tasks.  
+
+#### 4. Architectural Trade-offs  
+- **MobileNet_V2** is designed to prioritize speed and lightweight deployment. While effective in mobile scenarios, its accuracy can suffer when handling noisy or challenging inputs.  
+- **EfficientNet_M** focuses on achieving high accuracy for complex datasets. Its computational demands make it less suited for constrained environments like the Raspberry Pi 4.  
+
+---
+By understanding these limitations, this project highlights the importance of selecting models appropriate to the dataset and hardware environment. Future work could include:  
+- **Dataset Augmentation**: Enhancing the MNIST dataset with noise or complex patterns to challenge model performance.  
+- **Advanced Optimization Techniques**: Exploring alternative quantization strategies or fine-tuning models specifically for the Raspberry Pi architecture.  
+- **Alternative Hardware**: Testing on devices with integrated accelerators or exploring newer Raspberry Pi models with improved hardware support.  
 ### Practical Implications
 - The results highlight the viability of deploying lightweight machine learning models on edge devices for applications such as:
-- •	Automated document scanning and handwriting recognition.
-- •	Portable AI systems for offline image processing.
-- •	Real-time decision-making in embedded IoT devices.
+- Automated document scanning and handwriting recognition.
+- Portable AI systems for offline image processing.
+- Real-time decision-making in embedded IoT devices.
 
 ## Conclusion and Future Work
 - This project demonstrates the Raspberry Pi 4’s capability to support lightweight AI models for edge computing tasks. Among the tested models, MobileNet_V2 emerged as the most practical choice for real-world deployment due to its superior speed and resource efficiency.
