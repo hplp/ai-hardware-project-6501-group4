@@ -2,18 +2,20 @@
 
 ## Team Name: 
 - ECE6501-Group4
+---
 ## Team Members:
 - **Jiandi Wang(ctf2we)**: Hardware, Environment Debugging, Models adjusting, Test and Data analysis
 - **Yunwei Cai(ftf8kf)**: Model Finding
 - **Zilin Wang(akw4py)**: Environment Debugging, Test, Data analysis, and Slides
 - **Henan Zhao(cnw7cq)**: Model Finding
-
+---
 ## Objective and Motivation
 
 The primary objective of this project is to evaluate the performance of **ResNet_18**, **MobileNet_V2**, and **EfficientNet_M** models trained on the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) and deployed on the Raspberry Pi 4. Metrics such as **inference time**, **frames per second (FPS)**, **accuracy**, and **CPU/memory utilization** were analyzed.  
 
 Although we initially aimed to utilize the **Hailo-8 accelerator** to enhance model inference speed and efficiency, we had to pivot to standalone execution on the Raspberry Pi 4 due to the accelerator's incompatibility with this platform. This change allowed us to explore the potential of deploying lightweight machine learning models directly on the Raspberry Pi 4 without reliance on external accelerators.  
 
+---
 ## Purpose of Using Raspberry Pi 4  
 The Raspberry Pi 4 was chosen for its **affordability, portability, and flexibility**, making it a compelling platform for edge computing research. Below are the key reasons for its selection:  
 
@@ -22,6 +24,7 @@ The Raspberry Pi 4 was chosen for its **affordability, portability, and flexibil
 - **Portability and Deployment Flexibility**: Its small size and energy efficiency make it ideal for real-world applications such as IoT systems and portable AI solutions.  
 - **Reproducibility and Accessibility**: The open-source ecosystem of the Raspberry Pi ensures that experiments can be easily reproduced or extended.  
 
+---
 ### Real-World Applications  
 This study demonstrates the feasibility of deploying lightweight AI models on edge devices, offering insights into various real-world use cases:  
 
@@ -37,6 +40,8 @@ This study demonstrates the feasibility of deploying lightweight AI models on ed
 ![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
 ### EfficientNet
 ![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
+
+---
 ## Introduction
 - Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications.
 By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
@@ -44,6 +49,8 @@ By training and deploying lightweight models on this platform, we explore its fe
 - On-device handwriting recognition (e.g., in education or financial systems).
 - I-enhanced portable devices for accessibility solutions.
 ![](https://assets.raspberrypi.com/static/raspberry-pi-4-labelled@2x-1c8c2d74ade597b9c9c7e9e2fff16dd4.png)
+
+---
 ## Project Outline
 - 1.	Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.
 - 2.	Optimize models for deployment on Raspberry Pi 4 using TensorFlow Lite.
@@ -54,11 +61,13 @@ By training and deploying lightweight models on this platform, we explore its fe
 - **CPU and memory utilization**
 - 4.	Compare results to determine the most efficient model for edge deployment.
 
+---
 ## Model Comparisons
 - [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html): A compact residual network optimized for image recognition, balancing accuracy and computational cost.
 - [MobileNet_V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/): Utilizes depthwise separable convolutions and inverted residuals to reduce resource consumption, making it ideal for embedded systems.
 - [EfficientNet_M](https://pytorch.org/vision/main/models/efficientnet.html): Employs Neural Architecture Search (NAS) to scale model dimensions for optimal accuracy and efficiency.
 
+---
 ## Experiment Flow
 - 1.	Preprocess the MNIST dataset into a format suitable for TensorFlow training.
 - 2.	Train and quantize models on a local machine before transferring them to Raspberry Pi 4.
@@ -69,6 +78,7 @@ By training and deploying lightweight models on this platform, we explore its fe
 - **Resource usage (CPU, memory)**
 - 4.	Discuss trade-offs between performance and accuracy among the models.
 
+---
 ## Methodology
 - 1.	Prepare the Raspberry Pi 4 environment, ensuring necessary libraries (TensorFlow Lite, psutil, etc.) are installed.
 - 2.	Train models on the MNIST dataset using Python scripts.
@@ -78,6 +88,8 @@ By training and deploying lightweight models on this platform, we explore its fe
 ```python
 python3 classify_image.py --model_file <model.tflite> --image <test_image>
 ```
+
+---
 ## Results and Discussion
 ### Metrics Table
 | Metrics  | ResNet_18 | MobileNet_V2 | EfficientNet_M |
@@ -118,6 +130,7 @@ By understanding these limitations, this project highlights the importance of se
 - Portable AI systems for offline image processing.
 - Real-time decision-making in embedded IoT devices.
 
+---
 ## Conclusion and Future Work
 This project demonstrates the Raspberry Pi 4's capability to support lightweight AI models for edge computing tasks, showcasing its potential for cost-effective and portable AI solutions. Among the tested models, **ResNet_18** stood out for its superior accuracy and balanced trade-off between speed and resource usage, making it a strong candidate for scenarios where accuracy is critical, such as quality inspection or medical imaging.
 
@@ -136,6 +149,7 @@ This study underscores the versatility of the Raspberry Pi 4 in handling diverse
 - **Investigating other accelerators compatible with Raspberry Pi 4.**
 - **Exploring advanced optimization techniques like pruning and quantization-aware training.**
 
+---
 ## References
 -	1.	A. G. Howard, et al., MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications, 2017.
 -	2.	Raspberry Pi Official Documentation: https://www.raspberrypi.org/documentation/
