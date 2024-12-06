@@ -119,8 +119,18 @@ By understanding these limitations, this project highlights the importance of se
 - Real-time decision-making in embedded IoT devices.
 
 ## Conclusion and Future Work
-- This project demonstrates the Raspberry Pi 4’s capability to support lightweight AI models for edge computing tasks. Among the tested models, MobileNet_V2 emerged as the most practical choice for real-world deployment due to its superior speed and resource efficiency.
+This project demonstrates the Raspberry Pi 4's capability to support lightweight AI models for edge computing tasks, showcasing its potential for cost-effective and portable AI solutions. Among the tested models, **ResNet_18** stood out for its superior accuracy and balanced trade-off between speed and resource usage, making it a strong candidate for scenarios where accuracy is critical, such as quality inspection or medical imaging.
 
+However, for real-world deployments that prioritize speed and resource efficiency, **MobileNet_V2** emerged as the most practical choice. Its lightweight architecture allowed for faster inference times and lower CPU/memory utilization, making it suitable for applications like IoT devices, where responsiveness and energy efficiency are key factors.  
+
+The relatively lower performance of **EfficientNet_M** on the MNIST dataset highlights the importance of aligning model complexity with the dataset and deployment environment. Designed for larger, more complex datasets, EfficientNet_M struggled to leverage its architectural strengths in this simple, grayscale classification task. Additionally, its higher computational requirements made it less suitable for the resource-constrained Raspberry Pi 4 platform.  
+
+In conclusion, the selection of the appropriate model should consider the specific application requirements:
+- Use **ResNet_18** for tasks demanding high accuracy with moderate computational resources.
+- Choose **MobileNet_V2** for scenarios that require real-time processing and energy efficiency.
+- Avoid overly complex architectures like EfficientNet_M unless optimized for the target environment or dataset.
+
+This study underscores the versatility of the Raspberry Pi 4 in handling diverse AI workloads and provides a framework for selecting models tailored to edge computing constraints.
 - Future work could include:
 - **Expanding the dataset to include more complex tasks (e.g., CIFAR-10).**
 - **Investigating other accelerators compatible with Raspberry Pi 4.**
