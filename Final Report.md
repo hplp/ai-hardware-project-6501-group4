@@ -43,12 +43,47 @@ This study demonstrates the feasibility of deploying lightweight AI models on ed
 
 ---
 ## Introduction
-- Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications.
-By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
--	Smart IoT systems for object detection and classification.
-- On-device handwriting recognition (e.g., in education or financial systems).
-- I-enhanced portable devices for accessibility solutions.
+
+Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications. By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
+
+- **Smart IoT Systems**: Enabling object detection and classification for applications such as home automation, inventory management, and agriculture monitoring.
+- **On-Device Handwriting Recognition**: Facilitating tools in education or financial systems where offline handwriting analysis is required.
+- **AI-Enhanced Accessibility Solutions**: Powering portable devices to assist individuals with disabilities through real-time visual recognition.
+
+### Hardware Preparation
+
+To ensure seamless execution on the Raspberry Pi 4, the following hardware setup was implemented:
 ![](https://assets.raspberrypi.com/static/raspberry-pi-4-labelled@2x-1c8c2d74ade597b9c9c7e9e2fff16dd4.png)
+- **Raspberry Pi 4**: A quad-core ARM Cortex-A72 processor and 4GB RAM for sufficient computational capacity.
+- **Power Supply**: A stable 5V/3A power adapter to support high workloads during inference tasks.
+- **MicroSD Card**: A high-speed 64GB card for storing the Raspberry Pi OS, datasets, and models.
+- **Cooling System**: Passive heat sinks and a cooling fan to manage thermal dissipation during extended model testing.
+- **Display, Keyboard, and Mouse**: Peripherals for interactive control and debugging.
+- **Camera Module (Optional)**: For testing live inference on real-time data inputs.
+
+### Software Preparation
+
+The software setup was tailored to optimize the Raspberry Pi 4 for edge AI tasks. The following steps were undertaken:
+1. **Operating System Installation**:
+   - Installed **Raspberry Pi OS (64-bit)** to leverage the full capabilities of the 64-bit ARM architecture.
+   - Flashed the OS image onto the microSD card using tools like [Raspberry Pi Imager](https://www.raspberrypi.com/software/).
+   - ![](https://assets.raspberrypi.com/static/4d26bd8bf3fa72e6c0c424f9aa7c32ea/d1b7c/imager.webp)
+2. **Python Environment Setup**:
+   - Updated all system packages and installed Python 3.9 or later.
+   - Created a virtual environment using `venv` to manage dependencies cleanly.
+3. **Library Installation**:
+   - Installed essential libraries, including `TensorFlow Lite`, `ONNX Runtime`, `numpy`, and `scipy` for model inference.
+   - Added `matplotlib` and `seaborn` for visualizing performance metrics and `psutil` for monitoring resource usage.
+4. **Dataset Preparation**:
+   - Downloaded the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist), a standard benchmark for handwritten digit classification tasks.
+   - Preprocessed the data to align with the input format of the selected models.
+5. **Model Conversion**:
+   - Converted ResNet_18, MobileNet_V2, and EfficientNet_M models into TensorFlow Lite and ONNX formats for compatibility with the Raspberry Pi.
+   - Applied quantization techniques where applicable to reduce model size and improve inference speed.
+6. **Testing Scripts**:
+   - Developed Python scripts to automate inference, collect performance metrics, and log results for comparative analysis.
+
+This robust preparation ensured that the experiments were conducted in a controlled and repeatable manner, enabling precise evaluation of the Raspberry Pi 4’s capabilities for edge AI tasks.
 
 ---
 ## Project Outline
