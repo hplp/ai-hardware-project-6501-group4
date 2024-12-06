@@ -207,7 +207,9 @@ This robust preparation ensured that the experiments were conducted in a control
 ![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
 ### [EfficientNet](https://arxiv.org/abs/1905.11946)
 ![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
-
+- [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html): A compact residual network optimized for image recognition, balancing accuracy and computational cost.
+- [MobileNet_V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/): Utilizes depthwise separable convolutions and inverted residuals to reduce resource consumption, making it ideal for embedded systems.
+- [EfficientNet_M](https://pytorch.org/vision/main/models/efficientnet.html): Employs Neural Architecture Search (NAS) to scale model dimensions for optimal accuracy and efficiency.
 
 ---
 ## Project Outline
@@ -221,12 +223,7 @@ This robust preparation ensured that the experiments were conducted in a control
 4.	**Compare results to determine the most efficient model for edge deployment.**
 
 ---
-## Model Comparisons
-- [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html): A compact residual network optimized for image recognition, balancing accuracy and computational cost.
-- [MobileNet_V2](https://pytorch.org/hub/pytorch_vision_mobilenet_v2/): Utilizes depthwise separable convolutions and inverted residuals to reduce resource consumption, making it ideal for embedded systems.
-- [EfficientNet_M](https://pytorch.org/vision/main/models/efficientnet.html): Employs Neural Architecture Search (NAS) to scale model dimensions for optimal accuracy and efficiency.
 
----
 ## Experiment Flow
 1.	**Preprocess the MNIST dataset into a format suitable for TensorFlow training.**
 2.	**Train and quantize models on a local machine before transferring them to Raspberry Pi 4.**
