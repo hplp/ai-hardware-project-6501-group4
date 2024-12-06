@@ -33,15 +33,7 @@ This study demonstrates the feasibility of deploying lightweight AI models on ed
 3. **IoT and Wearable Devices**: Provide on-device AI capabilities for healthcare, environmental monitoring, or personalized user experiences.  
 
 ---
-## Models
-### [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html)
-![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rrlou8xyh7DeWdtHZk_m4Q.png)
-### [MobileNet_V2](https://arxiv.org/abs/1801.04381)
-![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
-### [EfficientNet](https://arxiv.org/abs/1905.11946)
-![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
 
----
 ## Introduction
 
 Edge computing requires devices that are compact, energy-efficient, and capable of performing AI tasks locally. The Raspberry Pi 4, a low-cost single-board computer, represents a promising candidate for such applications. By training and deploying lightweight models on this platform, we explore its feasibility for image classification tasks, focusing on performance and resource constraints. This work has significant implications for real-time applications, including:
@@ -205,7 +197,17 @@ print(f"Average CPU Usage: {np.mean(cpu_usage):.2f}%")
 print(f"Average Memory Usage: {np.mean(memory_usage):.2f}%")
 ```
 This robust preparation ensured that the experiments were conducted in a controlled and repeatable manner, enabling precise evaluation of the Raspberry Pi 4’s capabilities for edge AI tasks.
-   
+
+---
+
+## Models
+### [ResNet_18](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet18.html)
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rrlou8xyh7DeWdtHZk_m4Q.png)
+### [MobileNet_V2](https://arxiv.org/abs/1801.04381)
+![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
+### [EfficientNet](https://arxiv.org/abs/1905.11946)
+![](https://wisdomml.in/wp-content/uploads/2023/03/eff_banner.png)
+
 
 ---
 ## Project Outline
