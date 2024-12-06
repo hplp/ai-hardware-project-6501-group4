@@ -15,7 +15,7 @@
 - This study demonstrates the potential of cost-effective, low-power edge devices like the Raspberry Pi 4 for real-world AI applications such as smart surveillance, automated quality control, and embedded AI in IoT systems.
 ## Models
 ### ResNet_18
-![](https://www.researchgate.net/profile/Ebrahim-Senan/publication/358555196/figure/fig4/AS:1127379862863874@1645799713097/Structure-of-ResNet-18-model.png)
+![](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*rrlou8xyh7DeWdtHZk_m4Q.png)
 ### MobileNet_V2
 ![](https://cdn.analyticsvidhya.com/wp-content/uploads/2023/12/image-150.png)
 ### EfficientNet
