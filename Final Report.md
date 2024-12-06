@@ -209,14 +209,14 @@ This robust preparation ensured that the experiments were conducted in a control
 
 ---
 ## Project Outline
-- 1.	Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.
-- 2.	Optimize models for deployment on Raspberry Pi 4 using TensorFlow Lite.
-- 3.	Benchmark models under identical conditions to measure:
-  **Inference time**
-  **Frames per second (FPS)**
-  **Accuracy**
-  **CPU and memory utilization**
-- 4.	Compare results to determine the most efficient model for edge deployment.
+1.	**Train ResNet_18, MobileNet_V2, and EfficientNet_M models on the MNIST dataset.**
+2.	**Optimize models for deployment on Raspberry Pi 4 using TensorFlow Lite.**
+3.	**Benchmark models under identical conditions to measure:**
+-  Inference time
+-  Frames per second (FPS)
+-  Accuracy
+-  CPU and memory utilization
+4.	**Compare results to determine the most efficient model for edge deployment.**
 
 ---
 ## Model Comparisons
@@ -226,21 +226,21 @@ This robust preparation ensured that the experiments were conducted in a control
 
 ---
 ## Experiment Flow
-- 1.	Preprocess the MNIST dataset into a format suitable for TensorFlow training.
-- 2.	Train and quantize models on a local machine before transferring them to Raspberry Pi 4.
-- 3.	Perform inference on a test set and collect performance metrics, including:
-- **Average inference time**
-- **FPS**
-- **Accuracy**
-- **Resource usage (CPU, memory)**
-- 4.	Discuss trade-offs between performance and accuracy among the models.
+1.	**Preprocess the MNIST dataset into a format suitable for TensorFlow training.**
+2.	**Train and quantize models on a local machine before transferring them to Raspberry Pi 4.**
+3.	**Perform inference on a test set and collect performance metrics, including:**
+- Average inference time
+- FPS
+- Accuracy
+- Resource usage (CPU, memory)
+4.	**Discuss trade-offs between performance and accuracy among the models.**
 
 ---
 ## Methodology
-- 1.	Prepare the Raspberry Pi 4 environment, ensuring necessary libraries (TensorFlow Lite, psutil, etc.) are installed.
-- 2.	Train models on the MNIST dataset using Python scripts.
-- 3.	Deploy quantized TFLite versions of the models on the Raspberry Pi 4.
-- 4.	Execute inference tasks and log metrics using monitoring tools.
+1.	Prepare the Raspberry Pi 4 environment, ensuring necessary libraries (TensorFlow Lite, psutil, etc.) are installed.
+2.	Train models on the MNIST dataset using Python scripts.
+3.	Deploy quantized TFLite versions of the models on the Raspberry Pi 4.
+4.	Execute inference tasks and log metrics using monitoring tools.
 ### Example inference command:
 ```python
 python3 classify_image.py --model_file <model.tflite> --image <test_image>
@@ -301,10 +301,10 @@ In conclusion, the selection of the appropriate model should consider the specif
 - Avoid overly complex architectures like EfficientNet_M unless optimized for the target environment or dataset.
 
 This study underscores the versatility of the Raspberry Pi 4 in handling diverse AI workloads and provides a framework for selecting models tailored to edge computing constraints.
-- Future work could include:
-- **Expanding the dataset to include more complex tasks (e.g., CIFAR-10).**
-- **Investigating other accelerators compatible with Raspberry Pi 4.**
-- **Exploring advanced optimization techniques like pruning and quantization-aware training.**
+**Future work could include:**
+- Expanding the dataset to include more complex tasks (e.g., CIFAR-10).
+- Investigating other accelerators compatible with Raspberry Pi 4.
+- Exploring advanced optimization techniques like pruning and quantization-aware training.
 
 ---
 ## References
