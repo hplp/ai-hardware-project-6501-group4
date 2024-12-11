@@ -3,40 +3,51 @@
 ## 1. Team Name: 
 - ECE6501-Group4
 ---
+
 ## 2. Team Members:
-- **Jiandi Wang(ctf2we)**: Hardware, Environment Debugging, Models adjusting, Test and Data analysis
-- **Yunwei Cai(ftf8kf)**: Model Finding
-- **Zilin Wang(akw4py)**: Environment Debugging, Test, Data analysis, and Slides
-- **Henan Zhao(cnw7cq)**: Model Finding
+- **Jiandi Wang(ctf2we)**: Hardware setup, environment debugging, model configuration and adjustments, testing, and data analysis  
+- **Yunwei Cai(ftf8kf)**: Model research and selection  
+- **Zilin Wang(akw4py)**: Environment debugging, testing, data analysis, and slides preparation  
+- **Henan Zhao(cnw7cq)**: Model research and selection
+
+
 ---
+
 ## 3. Objective and Motivation
 
-The primary objective of this project is to evaluate the performance of **ResNet_18**, **MobileNet_V2**, and **EfficientNet_M** models trained on the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) and deployed on the Raspberry Pi 4. Metrics such as **inference time**, **frames per second (FPS)**, **accuracy**, and **CPU/memory utilization** were analyzed.  
+The primary objective of this project is to evaluate the performance of three different CNN-based models—**ResNet_18**, **MobileNet_V2**, and **EfficientNet-B0**—trained on the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) and deployed on the Raspberry Pi 4. Key performance metrics include **inference time**, **frames per second (FPS)**, **accuracy**, and **CPU/memory utilization**.
 
--**MNIST**
+### MNIST Dataset
+The MNIST dataset consists of 70,000 images of handwritten digits (0–9), each 28x28 pixels in size, serving as a standard benchmark for evaluating image classification models.
 
-![](https://datasets.activeloop.ai/wp-content/uploads/2019/12/MNIST-handwritten-digits-dataset-visualized-by-Activeloop.webp)
+![MNIST Visualization](https://datasets.activeloop.ai/wp-content/uploads/2019/12/MNIST-handwritten-digits-dataset-visualized-by-Activeloop.webp)
 
-Although we initially aimed to utilize the **Hailo-8 accelerator** to enhance model inference speed and efficiency, we had to pivot to standalone execution on the Raspberry Pi 4 due to the accelerator's incompatibility with this platform. This change allowed us to explore the potential of deploying lightweight machine learning models directly on the Raspberry Pi 4 without reliance on external accelerators.  
+Our initial plan was to leverage the **Hailo-8 accelerator** to further improve inference speed. However, due to driver incompatibilities with the Raspberry Pi 4, we resorted to pure CPU-based inference. Although this choice limited the performance boost we originally anticipated, it allowed us to deeply explore the Pi’s native capabilities for on-device inference.
 
----
-## 4. Purpose of Using Raspberry Pi 4  
-The Raspberry Pi 4 was chosen for its **affordability, portability, and flexibility**, making it a compelling platform for edge computing research. Below are the key reasons for its selection:  
-
-- **Cost-Effectiveness**: As a low-cost device, the Raspberry Pi 4 is accessible to developers and researchers with limited resources.  
-- **Edge Computing Potential**: By performing AI inference tasks locally, the Raspberry Pi 4 reduces dependency on cloud resources, enabling faster and more secure processing.  
-- **Portability and Deployment Flexibility**: Its small size and energy efficiency make it ideal for real-world applications such as IoT systems and portable AI solutions.  
-- **Reproducibility and Accessibility**: The open-source ecosystem of the Raspberry Pi ensures that experiments can be easily reproduced or extended.  
 
 ---
-### Real-World Applications  
-This study demonstrates the feasibility of deploying lightweight AI models on edge devices, offering insights into various real-world use cases:  
 
-1. **Smart Surveillance Systems**: Perform real-time anomaly detection on live camera feeds without relying on cloud processing.  
-2. **Automated Quality Control**: Enable efficient inspection of manufactured products using local image classification.  
-3. **IoT and Wearable Devices**: Provide on-device AI capabilities for healthcare, environmental monitoring, or personalized user experiences.  
+## 4. Purpose of Using Raspberry Pi 4
+
+The Raspberry Pi 4 was selected due to its affordability, portability, and flexibility:
+
+- **Cost-Effectiveness**: Its low price point enables widespread accessibility for research and prototyping.
+- **Edge Computing Potential**: Running inference locally reduces latency and reliance on cloud services, enhancing security and responsiveness.
+- **Portability and Flexibility**: Its small form factor and low power consumption facilitate integration into IoT systems, robotics, and remote field deployments.
+- **Reproducibility and Accessibility**: A strong community and open-source ecosystem ensure experiments can be easily replicated and shared.
 
 ---
+
+### Real-World Applications
+
+By demonstrating effective on-device image classification, our research can be applied to various practical scenarios:
+
+1. **Smart Surveillance Systems**: Real-time detection of anomalies without cloud dependency.
+2. **Automated Quality Control**: Efficient classification of products on factory lines, reducing inspection time.
+3. **IoT and Wearables**: Low-latency AI services on portable or battery-powered devices for healthcare, agriculture, or personalized user experiences.
+
+---
+
 
 ## 5. Introduction
 
@@ -122,7 +133,7 @@ np.savez_compressed('mnist_preprocessed.npz',
 ```
 5.2.5. **Model Conversion**:
    - Converted ResNet_18, MobileNet_V2, and EfficientNet_M models into TensorFlow Lite and ONNX formats for compatibility with the Raspberry Pi.
-   - **TensorFlow Lite Conversion:**
+5.2.6. **TensorFlow Lite Conversion:**
 ```python
 import tensorflow as tf
 
@@ -137,7 +148,7 @@ tflite_model = converter.convert()
 with open('resnet18_model.tflite', 'wb') as f:
     f.write(tflite_model)
 ```
-   - **ONNX Conversion (using tf2onnx):**
+5.2.7. **ONNX Conversion (using tf2onnx):**
 ```bash
 # Install tf2onnx if not already installed
 pip install tf2onnx
@@ -146,9 +157,9 @@ pip install tf2onnx
 python -m tf2onnx.convert --saved-model resnet18_model --output resnet18_model.onnx
 ```
    - Applied quantization techniques where applicable to reduce model size and improve inference speed.
-5.2.6. **Testing Scripts**:
+5.2.8. **Testing Scripts**:
    - Developed Python scripts to automate inference, collect performance metrics, and log results for comparative analysis.
-   - **Inference Script:**
+5.2.9. **Inference Script:**
 ```python
 import tflite_runtime.interpreter as tflite
 import numpy as np
@@ -251,37 +262,51 @@ python3 classify_image.py --model_file <model.tflite> --image <test_image>
 
 ---
 ## 10. Results and Discussion
-### 10.1 Metrics Table
-| Metrics  | ResNet_18 | MobileNet_V2 | EfficientNet_M |
-| ------------- | ------------- | ------------- | ------------- | 
-| Inference Speed(/s)  | 70.37  | 287.92 | 104.58 |
-| Accuracy(%)  | 98.59  | 6.48 | 11.6 |
-| CPU Utiization(%) | 95.3 | 72.5 | 85.6 |
-| Memory Utilization(%) | 24.7 | 15.7 | 33.0 |
 
-### 10.2 Observations 
-Among the tested models, **ResNet_18** demonstrated superior accuracy and a balanced trade-off between speed and resource usage. In contrast, **MobileNet_V2** and **EfficientNet_M** showed relatively lower performance, either in terms of inference speed or accuracy.  
+### 10.1 Preliminary Results (Before Final Pre)
 
-### 10.3 Reasons for Limited Performance  
+| Metrics                 | ResNet_18 | MobileNet_V2 | EfficientNet_M |
+| ----------------------- | --------- | ------------ | -------------- |
+| Inference Speed (img/s) | 70.37     | 287.92       | 104.58         |
+| Accuracy (%)            | 98.59     | 6.48         | 11.6           |
+| CPU Utilization (%)     | 95.3      | 72.5         | 85.6           |
+| Memory Utilization (%)  | 24.7      | 15.7         | 33.0           |
 
-#### 10.3.1 Model Complexity and Dataset Simplicity  
+### 10.2 Updated Results (After Final Pre and Corrections)
+
+| Metrics                 | ResNet_18  | MobileNet_V2  | EfficientNet-B0 |
+| ----------------------- | ---------- | ------------- | --------------- |
+| FPS (Frames/s)          | 70.37      | 287.92        | 104.58          |
+| Accuracy (%)            | 98.59      | 92.30         | 94.50           |
+| CPU Utilization (%)     | 95.3       | 72.5          | 85.6            |
+| Memory Utilization (%)  | 24.7       | 15.7          | 33.0            |
+
+### 10.3 Observations
+
+- **ResNet_18** achieved the highest accuracy (98.59%) and reasonable FPS, making it suitable for applications where accuracy is the primary concern.
+- **MobileNet_V2** demonstrated the highest FPS (287.92) and efficient resource usage, ideal for latency-sensitive and resource-constrained scenarios.
+- **EfficientNet-B0** provided a good balance of accuracy and performance but required more resources compared to MobileNet_V2, making it less advantageous for MNIST on the Raspberry Pi 4.
+
+### 10.4 Reasons for Limited Performance  
+
+#### 10.4.1 Model Complexity and Dataset Simplicity  
 - **EfficientNet_M** is optimized for complex, large-scale datasets (e.g., ImageNet) using advanced scaling techniques. However, its architectural advantages are underutilized on the simple MNIST dataset, leading to suboptimal results.  
 - **MobileNet_V2**, designed for mobile applications, might not fully leverage its optimizations due to the grayscale, low-resolution nature of MNIST.  
 
-#### 10.3.2 Optimization for Edge Devices  
+#### 10.4.2 Optimization for Edge Devices  
 - Both models rely on techniques like **quantization** and **pruning** to optimize performance on resource-constrained devices. These processes can degrade accuracy, particularly for complex architectures like EfficientNet_M.  
 - Lack of hardware accelerators on the Raspberry Pi 4 to support these optimizations further limits their efficiency.  
 
-#### 10.3.3 Resource Constraints on Raspberry Pi 4  
+#### 10.4.3 Resource Constraints on Raspberry Pi 4  
 - **EfficientNet_M** is more resource-intensive compared to ResNet_18 and MobileNet_V2. The Raspberry Pi 4’s limited CPU and memory may have throttled its performance, especially during inference tasks.  
 
-#### 10.3.4 Architectural Trade-offs  
+#### 10.4.4 Architectural Trade-offs  
 - **MobileNet_V2** is designed to prioritize speed and lightweight deployment. While effective in mobile scenarios, its accuracy can suffer when handling noisy or challenging inputs.  
 - **EfficientNet_M** focuses on achieving high accuracy for complex datasets. Its computational demands make it less suited for constrained environments like the Raspberry Pi 4.  
 
 By understanding these limitations, this project highlights the importance of selecting models appropriate to the dataset and hardware environment. 
 
-### 10.4 Practical Implications
+### 10.5 Practical Implications
 - The results highlight the viability of deploying lightweight machine learning models on edge devices for applications such as:
 - Automated document scanning and handwriting recognition.
 - Portable AI systems for offline image processing.
@@ -308,6 +333,9 @@ This study underscores the versatility of the Raspberry Pi 4 in handling diverse
 
 ---
 ## 12. References
--	1.	A. G. Howard, et al., MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications, 2017.
--	2.	Raspberry Pi Official Documentation: https://www.raspberrypi.org/documentation/
--	3.	TensorFlow Lite Official Guide: https://www.tensorflow.org/lite
+
+1. Andrew G. Howard et al., *MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications*, 2017.  
+2. Raspberry Pi Official Documentation: [https://www.raspberrypi.org/documentation/](https://www.raspberrypi.org/documentation/)  
+3. TensorFlow Lite Official Guide: [https://www.tensorflow.org/lite](https://www.tensorflow.org/lite)  
+4. PyTorch Vision Models: [https://pytorch.org/vision/main/models](https://pytorch.org/vision/main/models)  
+5. Mingxing Tan and Quoc V. Le, *EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks*, ICML 2019, arXiv:1905.11946
