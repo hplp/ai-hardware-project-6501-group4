@@ -1,4 +1,5 @@
 # AI_Hardware_Project_ECE6501_Group_4
+## Final Report is in ##Final Report.md##
 
 ## Team Name: 
 - ECE6501-Group4
