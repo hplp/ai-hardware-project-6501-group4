@@ -237,28 +237,121 @@ This robust preparation ensured that the experiments were conducted in a control
 -  CPU and memory utilization
 4.	**Compare results to determine the most efficient model for edge deployment.**
 
+
 ---
 
 ## 8. Experiment Flow
-1.	**Preprocess the MNIST dataset into a format suitable for TensorFlow training.**
-2.	**Train and quantize models on a local machine before transferring them to Raspberry Pi 4.**
-3.	**Perform inference on a test set and collect performance metrics, including:**
-- Average inference time
-- FPS
-- Accuracy
-- Resource usage (CPU, memory)
-4.	**Discuss trade-offs between performance and accuracy among the models.**
+
+1. Preprocess MNIST and ensure compatibility with the models.
+2. Train and quantize models on a desktop machine.
+3. Deploy the converted models to Raspberry Pi 4.
+4. Connect the Raspberry Pi to a local network and configure SSH for remote control.
+5. Execute inference on test data and collect performance metrics.
+6. Evaluate results and draw conclusions.
 
 ---
 ## 9. Methodology
-1.	Prepare the Raspberry Pi 4 environment, ensuring necessary libraries (TensorFlow Lite, psutil, etc.) are installed.
-2.	Train models on the MNIST dataset using Python scripts.
-3.	Deploy quantized TFLite versions of the models on the Raspberry Pi 4.
-4.	Execute inference tasks and log metrics using monitoring tools.
-### Example inference command:
-```python
-python3 classify_image.py --model_file <model.tflite> --image <test_image>
+
+### 9.1 System Setup
+#### Step 1: Install Raspberry Pi OS
+
+1. **Download the OS**:
+   - Download the [Raspberry Pi OS (64-bit)](https://www.raspberrypi.com/software/operating-systems/) image from the official Raspberry Pi website.
+   
+2. **Flash the OS to SD Card**:
+   - Use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to write the OS image to a high-speed microSD card.
+
+   ![Raspberry Pi Imager Interface](https://assets.raspberrypi.com/static/4d26bd8bf3fa72e6c0c424f9aa7c32ea/d1b7c/imager.webp)
+
+3. **Enable SSH and Configure Wi-Fi**:
+   - After flashing, insert the SD card into your computer.
+   - Create a file named `ssh` (no extension) in the `/boot` partition to enable SSH.
+   - Create a `wpa_supplicant.conf` file in the `/boot` partition with the following content (replace `SSID` and `PASSWORD` with your Wi-Fi details):
+
+     ```plaintext
+     country=US
+     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+     update_config=1
+
+     network={
+         ssid="YOUR_SSID"
+         psk="YOUR_PASSWORD"
+         key_mgmt=WPA-PSK
+     }
+     ```
+
+4. **Boot Up the Raspberry Pi**:
+   - Insert the SD card into the Raspberry Pi, connect it to a power source, and boot up the system.
+
+#### Step 2: Find Raspberry Pi's IP Address
+
+To connect to the Raspberry Pi:
+- Use your router's admin page to find the Raspberry Pi's IP address.
+- Alternatively, use a network scanner tool like `nmap`:
+
+  ```bash
+  nmap -sn 192.168.1.0/24
+  ```
+#### Step 3: Connect to Raspberry Pi via SSH
+
+Connect to the Raspberry Pi from your computer using the IP address:
+```bash
+ssh pi@<Raspberry_Pi_IP>
 ```
+- The default username is pi and the default password is raspberry.
+
+#### Step 4: Update and Upgrade the Raspberry Pi
+
+After logging in via SSH, update the system and install necessary tools:
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+#### Step 5: Enable VNC
+
+For GUI-based access to the Raspberry Pi:
+
+- Run the Raspberry Pi configuration tool:
+  ```bash
+  sudo raspi-config
+  ```
+- Navigate to Interfacing Options > VNC and enable it.
+
+### 9.2 Workflow for Experiments
+
+#### Step 1: Transfer Models and Data to Raspberry Pi
+Use scp to copy trained .tflite models and preprocessed dataset files to the Raspberry Pi:
+```bash
+scp model.tflite pi@<Raspberry_Pi_IP>:/home/pi/
+scp mnist_preprocessed.npz pi@<Raspberry_Pi_IP>:/home/pi/
+```
+#### Step 2: Run Inference Script
+Navigate to the directory containing the model and dataset, then execute the inference script:
+```bash
+python3 inference_script.py
+```
+
+#### Step 3: Monitor Resource Usage
+Install and use htop to monitor CPU and memory usage during inference:
+```bash
+sudo apt install htop
+htop
+```
+
+#### Step 4: Visualize Results
+After inference, transfer result logs back to your computer for further analysis:
+```bash
+scp pi@<Raspberry_Pi_IP>:/home/pi/results.csv ./local_results/
+```
+
+### 9.3 Experiment Execution Summary
+1.	**Set Up SSH:** Enabled SSH for remote control, allowing model transfer and command execution from a laptop.
+2.	**Deploy Models:** Transferred .tflite models and datasets to the Raspberry Pi for local inference.
+3.	**Run Inference:** Executed the Python inference scripts on the Raspberry Pi.
+4.	**Monitor Performance:** Used tools like psutil and htop to measure CPU and memory usage during the tests.
+5.	**Analyze Results:** Retrieved logs and visualized performance metrics such as FPS, accuracy, and resource utilization.
+
+
 
 ---
 ## 10. Results and Discussion
