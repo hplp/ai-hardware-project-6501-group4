@@ -52,7 +52,7 @@ To ensure seamless execution on the Raspberry Pi 4, the following hardware setup
 ![](https://assets.raspberrypi.com/static/raspberry-pi-4-labelled@2x-1c8c2d74ade597b9c9c7e9e2fff16dd4.png)
 - **Raspberry Pi 4**: A quad-core ARM Cortex-A72 processor and 4GB RAM for sufficient computational capacity.
 - **Power Supply**: A stable 5V/3A power adapter to support high workloads during inference tasks.
-- **MicroSD Card**: A high-speed 64GB card for storing the Raspberry Pi OS, datasets, and models.
+- **MicroSD Card**: A high-speed 32GB card for storing the Raspberry Pi OS, datasets, and models.
 - **Cooling System**: Passive heat sinks and a cooling fan to manage thermal dissipation during extended model testing.
 - **Display, Keyboard, and Mouse**: Peripherals for interactive control and debugging.
 - **Camera Module (Optional)**: For testing live inference on real-time data inputs.
