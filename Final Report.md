@@ -261,8 +261,6 @@ This robust preparation ensured that the experiments were conducted in a control
 2. **Flash the OS to SD Card**:
    - Use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to write the OS image to a high-speed microSD card.
 
-   ![Raspberry Pi Imager Interface](https://assets.raspberrypi.com/static/4d26bd8bf3fa72e6c0c424f9aa7c32ea/d1b7c/imager.webp)
-
 3. **Enable SSH and Configure Wi-Fi**:
    - After flashing, insert the SD card into your computer.
    - Create a file named `ssh` (no extension) in the `/boot` partition to enable SSH.
